@@ -20,8 +20,9 @@
   "scripts": {
     "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
     "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
+    "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook",
+    "chromatic": "npx chromatic --project-token=9b07882d8b24"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +52,9 @@
     "@storybook/manager-webpack4": "^6.5.16",
     "@storybook/react": "^6.5.16",
     "@storybook/testing-library": "^0.0.13",
-    "babel-loader": "^8.3.0"
-  }
+    "babel-loader": "^8.3.0",
+    "chromatic": "^6.17.2"
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "my-storybook@0.1.0"
 }
