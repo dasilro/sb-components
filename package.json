@@ -1,7 +1,28 @@
 {
-  "name": "my-storybook",
+  "name": "dsr-my-storybook-components",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "license": "MIT",
+  "typings": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "homepage": "https://github.com/dasilro/sb-components",
+  "repository": {
+    "url": "https://github.com/dasilro/sb-components",
+    "type": "git"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "peerDependencies": {
+    "react": ">=18",
+    "typescript": ">=4.9.5"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -19,10 +40,12 @@
   },
   "scripts": {
     "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
-    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook",
+    "build": "yarn clean && tsc && yarn copy-files",
     "storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider start-storybook -p 6006",
     "build-storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider build-storybook",
-    "chromatic": "npx chromatic --project-token=9b07882d8b24"
+    "chromatic": "npx chromatic --project-token=9b07882d8b24",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 1 src/**/*css dist/"
   },
   "eslintConfig": {
     "extends": [
@@ -53,8 +76,19 @@
     "@storybook/react": "^6.5.16",
     "@storybook/testing-library": "^0.0.13",
     "babel-loader": "^8.3.0",
-    "chromatic": "^6.17.2"
+    "chromatic": "^6.17.2",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^4.4.1",
+    "semantic-release": "^21.0.1"
   },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/github",
+    "@semantic-release/npm",
+    "@semantic-release/git"
+  ],
   "readme": "ERROR: No README data found!",
   "_id": "my-storybook@0.1.0"
 }
